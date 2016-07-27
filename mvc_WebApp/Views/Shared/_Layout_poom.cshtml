@@ -1,0 +1,27 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Report</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=windows-874"> 
+     @RenderSection("css", required: false)
+     @Styles.Render("~/Content/poom_layout.css")
+</head>
+
+<body>
+    
+     <input type="submit" onclick="parent.location='@Url.Action("About", "Home") ';return false;" value="home" />
+    | <input type="submit" onclick="parent.location='@Url.Action("Register", "Account") ';return false;" value="Account" />
+
+     <div class="body">
+        @RenderBody()
+     </div>
+</body>
+
+
+    @Html.Hidden("h_prefix", @Url.Content("~")) 
+
+
+    @Scripts.Render("~/Scripts/jquery-1.7.1.js")
+    @RenderSection("scripts", required: false) 
+</html>

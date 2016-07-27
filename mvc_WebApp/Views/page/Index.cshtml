@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_poom.cshtml";
+} 
+<h2>Index</h2>
+
+
+name : @Html.TextBox("tb_name", null, new { @class = "tb_box", placeholder ="123"}) 
+
+ lastname : @Html.TextBox("tb_lastname", "text", new { @class = "tb_box", placeholder =""}) 
+
+  
+
+<input id="btnSubmit" type="button" value="button" />
+
+@section css{
+    @Styles.Render("~/Content/poom_layout.css")
+    <style>
+        .tb_box
+        {
+            background-color:Blue;    
+            color:White;
+        }
+    </style>
+}
+@section scripts{
+    @Scripts.Render("~/Scripts/poom/_manual_page.js")
+    
+    <script>
+        $("#btnSubmit").on("click", function () {
+            alert("button");
+             var data =  fncCallServer() ;
+             console.log(data);
+        });
+        function fncCallServer() { 
+            var _url = "@Url.Action("query", "page")"
+            var data = {
+                data1 : "test1",
+                data2 : "test2"
+            }
+            console.log(data);
+            return $.ajax({
+                   type: "POST",
+                    url: _url,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data:   JSON.stringify(data) ,
+                    success: function (response) {  global_res = response ; },
+                    error: function (xhr, status, msg) {
+                        var error = eval("(" + xhr.responseText + ")");
+                        console.log(error.Message);
+                        result = null;
+                    }
+            }); 
+        }
+    </script>
+}
+
