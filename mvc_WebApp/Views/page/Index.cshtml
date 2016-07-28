@@ -3,8 +3,7 @@
     Layout = "~/Views/Shared/_Layout_poom.cshtml";
 } 
 <h2>Index</h2>
-
-
+ 
 name : @Html.TextBox("tb_name", null, new { @class = "tb_box", placeholder ="123"}) 
 
  lastname : @Html.TextBox("tb_lastname", "text", new { @class = "tb_box", placeholder =""}) 
@@ -18,8 +17,9 @@ name : @Html.TextBox("tb_name", null, new { @class = "tb_box", placeholder ="123
     <style>
         .tb_box
         {
-            background-color:Blue;    
+            background-color:Gray;    
             color:White;
+            font-weight:bolder;
         }
     </style>
 }

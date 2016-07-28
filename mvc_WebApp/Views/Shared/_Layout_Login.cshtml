@@ -1,0 +1,18 @@
+﻿
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+
+    </head>
+    @RenderSection("css",required:false) 
+    @Styles.Render("~/Content/bootstrap.min.css")
+<body> 
+        @RenderBody()
+</body>
+    @Html.Hidden("h_prefix", @Url.Content("~"))  
+
+    @Scripts.Render("~/Scripts/jquery-1.7.1.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @RenderSection("scripts", required: false) 
+</html>
