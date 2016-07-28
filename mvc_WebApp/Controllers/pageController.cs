@@ -14,6 +14,7 @@ namespace mvc_WebApp.Controllers
     {
         //
         // GET: /page/ 
+        [ActionFilter.AuthenFilter]
         public ActionResult Index()
         {
 
@@ -26,10 +27,8 @@ namespace mvc_WebApp.Controllers
                      new modelData { data1 = data1, data2 = data2 } 
                 , JsonRequestBehavior.AllowGet);
         }
-         
-         
-        
 
+          
 
         // GET: /page/Details/5
 
