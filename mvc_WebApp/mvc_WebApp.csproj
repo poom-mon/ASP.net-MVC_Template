@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExcelLibrary">
+      <HintPath>..\packages\ExcelLibrary.1.0.0.0\lib\ExcelLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -125,9 +128,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthenController.cs" />
     <Compile Include="Controllers\pageController.cs" />
+    <Compile Include="Controllers\testController.cs" />
+    <Compile Include="Controllers\uploadController.cs" />
+    <Compile Include="Controllers\utilityController.cs" />
+    <Compile Include="excel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\testModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -223,7 +231,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -239,6 +246,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Authen\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\utility\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\utility\partial\bupa.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\utility\partial\cigna.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\utility\partial\thailife.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\test\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
