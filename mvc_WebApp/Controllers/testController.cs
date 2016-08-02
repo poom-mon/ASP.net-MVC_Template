@@ -21,6 +21,19 @@ namespace mvc_WebApp.Controllers
             return View(bb);
         }
 
+        public ActionResult query()
+        {
+            List<Models.testModel.userInfo> obj = new List<Models.testModel.userInfo>();
+            obj.Add(new Models.testModel.userInfo() { name = "sittiporn", lname = "jangsang" });
+            obj.Add(new Models.testModel.userInfo() { name = "cha", lname = "tae" });
+
+            Models.testModel.html bb = new Models.testModel.html();
+            bb.htmlForm = rederTable(obj);
+
+            return   Content(bb.htmlForm) ;
+        }
+
+
         public string rederTable(List<Models.testModel.userInfo> a)
         {
 

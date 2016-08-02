@@ -11,9 +11,53 @@
     @(new HtmlString(Model.htmlForm))
 </div>
 
+dv2
+<div id="dv2">
+
+</div>
+
+<br />
+
+dv3  : <input id="btndv3" type="button" value="button" />
+<div id="dv3">
+
+</div>
+  
+  @Html.Hidden("h_prefix", @Model.htmlForm)  
+
+ @section scripts{
+     <script> 
+
+      $("#dv2").html($("#h_prefix").val());
  
+     
+      $("#btndv3").on("click", function () {
+            alert("button");
+             var data =  fncCallServer() ;
+             console.log(data);
+        });
+        function fncCallServer() { 
+            var _url = "@Url.Action("query", "test")"
+            var data = { } 
+            return $.ajax({
+                   type: "POST",
+                    url: _url,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html", 
+                    success: function (response) {  
+                         global_res = response ; 
+                        $("#dv3").html(global_res);
+                    },
+                    error: function (xhr, status, msg) {
+                        var error = eval("(" + xhr.responseText + ")");
+                        console.log(error.Message);
+                        result = null;
+                    }
+            }); 
+        }
 
-
+ </script>
+ }
 
 
 
