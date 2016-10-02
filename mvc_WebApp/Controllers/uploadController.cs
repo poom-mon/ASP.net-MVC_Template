@@ -14,8 +14,8 @@ namespace mvc_WebApp.Controllers
         // GET: /upload/
 
         public ActionResult Index()
-        {
-             
+        { 
+    
             return View();
         }
 

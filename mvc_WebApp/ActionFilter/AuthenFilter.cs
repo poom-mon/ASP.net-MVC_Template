@@ -11,15 +11,14 @@ namespace mvc_WebApp.ActionFilter
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-             //Log("OnActionExecuting", filterContext.RouteData);
-
+           //Log("OnActionExecuting", filterContext.RouteData); 
             string actionName = filterContext.RouteData.Values["action"].ToString().ToLower(); 
 
             if (actionName != "login" && HttpContext.Current.Session["userAuthen"] == null)
             {
                 // redirect to authen page
                 /*
-                     string redirectOnSuccess = filterContext.HttpContext.Request.Url.PathAndQuery;
+                    string redirectOnSuccess = filterContext.HttpContext.Request.Url.PathAndQuery;
                     string redirectUrl = string.Format("?ReturnUrl={0}", redirectOnSuccess);
                     string loginUrl = "login" + redirectUrl; 
                     filterContext.Result = new RedirectResult(loginUrl);

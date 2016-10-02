@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    export excel : 
+<input id="btnExportExcel" type="button" value="button" />
+</head>
+<body>
+    
+    <div>
+    
+    </div>
+</body>
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script>
+        $("#btnExportExcel").click(function (e) { 
+
+            alert("xx");
+                window.location = "@Url.Action("exportExcelData", "utility")?startdate=555&Enddate=22&isNotExport=1" ;
+                 
+         });
+    </script>
+</html>

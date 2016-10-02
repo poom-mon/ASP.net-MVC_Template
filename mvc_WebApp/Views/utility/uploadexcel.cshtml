@@ -1,0 +1,68 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+   
+
+    import : 
+    <input id="fUPload" type="file" />
+
+<input id="btnImport" type="button" value="button" />
+
+</head>
+<body>
+    
+    <div>
+    
+    </div>
+</body>
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script>
+        $("#btnImport").click(function (e) {
+
+            alert("xx");
+                window.location = "@Url.Action("exportExcelData", "utility")?startdate=555&Enddate=22&isNotExport=1" ;
+                 
+        });
+        function upload(files, data, func) {
+
+            var fileName = files[0].name;
+            var ext = getFileExtension(fileName).toLowerCase();
+
+            if (ext == 'xls' || ext == 'xlsx') {
+
+                loader_show();
+
+                var proj = $('li.active .rdb_project').data('project');
+                data.append('projectName', proj);
+                data.append('ext', ext);
+                data.append(fileName, files[0]);
+
+                $.ajax({
+                    type: "POST",
+                    url: getPath('importExcel/UploadExcel'),
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: func,
+                    error: function (xhr, status, p3, p4) {
+                        var err = "Error " + " " + status + " " + p3 + " " + p4;
+                        if (xhr.responseText && xhr.responseText[0] == "{")
+                            err = JSON.parse(xhr.responseText).Message;
+                        console.log(err);
+                    }
+                });
+
+            } else {
+                alert("Upload File .xls, .xlsx only !!!");
+            }
+
+        }
+    </script>
+</html>
