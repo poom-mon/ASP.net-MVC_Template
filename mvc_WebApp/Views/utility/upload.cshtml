@@ -14,6 +14,7 @@
     <input id="fUPload" type="file" />
 
 <input id="btnImport" type="button" value="button" />
+  @Html.Hidden("h_prefix", @Url.Content("~"))
 
 </head>
 <body>
@@ -23,30 +24,35 @@
     </div>
 </body>
 <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/poom/helpers.js"></script>
     <script>
         $("#btnImport").click(function (e) {
-
-            alert("xx");
-                window.location = "@Url.Action("exportExcelData", "utility")?startdate=555&Enddate=22&isNotExport=1" ;
-                 
+            var data = new FormData();
+            var _fil = $('#fUPload')[0].files;
+            upload(_fil, data, function (e) {
+                console.log("success>>", e);
+            })
         });
         function upload(files, data, func) {
 
             var fileName = files[0].name;
             var ext = getFileExtension(fileName).toLowerCase();
 
-            if (ext == 'xls' || ext == 'xlsx') {
+           // console.log(fileName, ext);
 
-                loader_show();
+           // if (ext == 'xls' || ext == 'xlsx') {
+             
 
-                var proj = $('li.active .rdb_project').data('project');
-                data.append('projectName', proj);
+               // var proj = $('li.active .rdb_project').data('project');
+              //  data.append('projectName', proj);
                 data.append('ext', ext);
                 data.append(fileName, files[0]);
 
+                console.log(getPath('utility/UploadExcel'));
+
                 $.ajax({
                     type: "POST",
-                    url: getPath('importExcel/UploadExcel'),
+                    url: getPath('utility/UploadExcel'),
                     contentType: false,
                     processData: false,
                     data: data,
@@ -59,9 +65,9 @@
                     }
                 });
 
-            } else {
-                alert("Upload File .xls, .xlsx only !!!");
-            }
+          // } else {
+          //     alert("Upload File .xls, .xlsx only !!!");
+          //}
 
         }
     </script>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -75,7 +76,12 @@ namespace mvc_WebApp.Controllers
         public ActionResult Index()
         { 
             return View();
-        }  
+        }
+
+        public ActionResult upload()
+        {
+            return View();
+        } 
         [HttpPost]
         public ActionResult UploadExcel()
         {
@@ -97,10 +103,14 @@ namespace mvc_WebApp.Controllers
 
                         string plan_id, sub_plan, group_plan, tb;
 
+                        readExcel(file_stream,extension);
+
+
                         switch (projectName.ToLower())
                         {
                             case "bupa":
                                 plan_id = Request["plan_id"];
+                                ///// Stream file_stream;
                                 //obj = bal.getBupaLeads(file_stream, extension, plan_id);
                                 break;
 
@@ -124,6 +134,20 @@ namespace mvc_WebApp.Controllers
 
             return View();
         }
+         
+        public void readExcel(Stream file,string extension) {
+            cExcel.excel excel = new cExcel.excel();
+            
+            
+             using (DataTable dt = excel.readToDataTable(file, extension))
+             {
+                 if (dt != null && dt.Rows.Count > 0)
+                 {
+
+                 }
+
+             }
+        }
         public ActionResult getPartial(modelPass data)
         {
             ActionResult objreturn = null;
@@ -143,6 +167,7 @@ namespace mvc_WebApp.Controllers
         }
 
     }
+    
     public class modelPass
     {
         public systemImport systemImport { get; set; }

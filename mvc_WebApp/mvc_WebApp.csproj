@@ -219,6 +219,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\poom\helpers.js" />
     <Content Include="Scripts\poom\_layout.js" />
     <Content Include="Scripts\poom\_manual_page.js" />
     <Content Include="Scripts\_references.js" />
@@ -269,6 +270,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\utility\exportExcel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\utility\upload.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\helper\cExcel\cExcel.csproj">
+      <Project>{6ff31e7c-e36b-4a6c-8fca-672dedf70741}</Project>
+      <Name>cExcel %28Helper\cExcel\cExcel%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\helper\cHelper\cHelper.csproj">
+      <Project>{67baeefc-4885-47a0-8919-d0c5da2e9629}</Project>
+      <Name>cHelper %28Helper\cHelper\cHelper%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
