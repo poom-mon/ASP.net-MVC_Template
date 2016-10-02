@@ -11,10 +11,18 @@ namespace mvc_WebApp.Controllers
         //
         // GET: /Authen/
 
+        [ActionFilter.AuthenFilter]
         public ActionResult Index()
-        {
+        { 
+            //ViewBag.cancelActiveby = "System";
+            //if (HttpContext.Session["_cancelPolicyUser"] != null)
+            //{
+            //    ViewBag.cancelActiveby = HttpContext.Session["_cancelPolicyUser"].ToString();
+            //}
             return View();
+          //  return View();
         }
+         [ActionFilter.AuthenFilter]
         public ActionResult chkAuthen(ModelAuthen  data)
         {
             return Json(
